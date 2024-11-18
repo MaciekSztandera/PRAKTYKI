@@ -20,7 +20,7 @@ if(isset($_POST['pass1'])) {
         else {
             if ($login_attempt==true) {					
                 if ($polaczenie->query("INSERT INTO uzytkownicy (pass) VALUES ('$pass_hash')")) {
-                    $_SESSION['registered']=true;
+                    $_SESSION['pass_change'] = true;
                     header('Location: index.php');
                 }
                 else {
@@ -41,10 +41,12 @@ if(isset($_POST['pass1'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
 <form action="index.php" method="post" class="main">
+    <p id="heading">Wpisz nowe hasło</p>
     <!-- HASŁO -->
     <div class="field">
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/></svg>    

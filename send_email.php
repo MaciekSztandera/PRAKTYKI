@@ -10,6 +10,7 @@
     $stmt -> bind_param("ss", $token_hash, $email_to);
     $stmt->execute();           
     $stmt->close();
+
     require_once(__DIR__ . '/vendor/autoload.php');
     use Symfony\Component\Mailer\Transport;
     use Symfony\Component\Mailer\Mailer;
@@ -21,10 +22,10 @@
             ->from("2pinfo@mskk.pl")
             ->to($email_to)
             ->subject("Potwierdź maila")
-            ->html('<p>Kliknij <a href="http://10.15.0.78/logowanie/activation_email.php?token='. $token_hash .'">tutaj</a>, aby potwierdzić maila</p>');
+            ->html('<p>Kliknij <a href="http://10.15.0.78/logowanie/activation_email.php?token='.$token_hash.'">tutaj</a>, aby potwierdzić maila</p>');
         $mailer->send($email);
-        $_SESSION['sendmail']=true;
-        $_SESSION['registered']=false;
+        $_SESSION['sendmail'] = true;
+        $_SESSION['registered'] = false;
         $polaczenie->close();
         header('Location: index.php');
     } 
