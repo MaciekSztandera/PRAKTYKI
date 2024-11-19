@@ -24,7 +24,7 @@
                 $wiersz = $rezultat->fetch_assoc();
                 if (password_verify($pass, $wiersz['pass'])){
                     if ($wiersz['active_account'] === 'y') {
-                        $_SESSION['logged']= true;
+                        $_SESSION['logged']= false;
                         $_SESSION['ID'] = $wiersz['ID'];
                         $_SESSION['user'] = $wiersz['user'];
                         unset($_SESSION['err']);

@@ -13,7 +13,8 @@ $user = $result->fetch_assoc();
 if ($user === null) {
     echo "Nieprawidłowy token";
     exit;
-} else {
+} 
+else {
     $update_sql = "UPDATE uzytkownicy SET active_account='y' WHERE ID = ?";
     $update_stmt = $polaczenie->prepare($update_sql);
     $update_stmt->bind_param("i", $user['ID']);
