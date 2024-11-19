@@ -24,7 +24,7 @@ body {
     background-color: #171717;
     border-radius: 25px;
     transition: .4s ease-in-out;
-    margin: 6% auto;
+    margin: 5% auto;
     width: 35%;
     color: white;
     border: 3px solid #0e0e0e;
@@ -83,10 +83,5 @@ button:hover {
     background-color: #5c5c5c;
 }
 a {
-    color:#1877f2;
-    text-decoration: none;
-}
-a:visited {
-    color:#1877f2;
-    text-decoration: none;
+    color: #1877f2;
 }

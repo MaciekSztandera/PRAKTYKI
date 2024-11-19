@@ -23,7 +23,7 @@
                 ->from("2pinfo@mskk.pl")
                 ->to($email_pass)
                 ->subject("Resetowanie hasła")
-                ->html('<p>Kliknij <a href="127.0.0.1/reset_password.php?token='.$token.'">tutaj</a>, aby zresetować hasło</p>');
+                ->html('<p>Kliknij <a href="10.15.0.78/logowanie/reset_pass.php?token='.$token.'">tutaj</a>, aby zresetować hasło</p>');
             $mailer->send($email);
             $_SESSION['sendmail'] = true;
             $_SESSION['pass_change'] = false;

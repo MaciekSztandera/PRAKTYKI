@@ -22,14 +22,21 @@
             if($ilu_userow>0)
             {
                 $wiersz = $rezultat->fetch_assoc();
-                if (password_verify($pass, $wiersz['pass']))
-                {
-                    $_SESSION['logged']= true;
-                    $_SESSION['ID'] = $wiersz['ID'];
-                    $_SESSION['user'] = $wiersz['user'];
-                    unset($_SESSION['err']);
-                    $rezultat->close();
-                    header('Location: main_page.php');
+                if (password_verify($pass, $wiersz['pass'])){
+                    if ($wiersz['active_account'] === 'y') {
+                        $_SESSION['logged']= true;
+                        $_SESSION['ID'] = $wiersz['ID'];
+                        $_SESSION['user'] = $wiersz['user'];
+                        unset($_SESSION['err']);
+                        $rezultat->close();
+                        $_SESSION['login'] = $login;
+                        header('Location: authentication.php');
+                    }
+                    else {
+                        $_SESSION['verification']= true;
+                        $_SESSION['registered'] = false;
+                        header('Location: index.php');
+                    }
                 }
                 else {
                 $_SESSION['err'] = '<span style="color: red; font-size: 20px;">Nieprawidłowy login lub hasło!</span>';

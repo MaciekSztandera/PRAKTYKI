@@ -53,7 +53,7 @@
 				throw new Exception(mysqli_connect_errno());
 			}
 			else {
-				$rezultat = $polaczenie->query("SELECT id FROM uzytkownicy WHERE BINARY user='$login'");
+				$rezultat = $polaczenie->query("SELECT id FROM uzytkownicy WHERE BINARY user = '$login' ");
 				if (!$rezultat) throw new Exception($polaczenie->error);
 				$ile_takich_loginow = $rezultat->num_rows;
 				if($ile_takich_loginow>0)
@@ -61,7 +61,7 @@
 					$login_attempt=false;
 					$_SESSION['e_login']="Istnieje już konto z podanym loginem.";
 				}
-                $rezultat = $polaczenie->query("SELECT id FROM uzytkownicy WHERE BINARY email='$email'");
+                $rezultat = $polaczenie->query("SELECT id FROM uzytkownicy WHERE BINARY email = '$email' ");
 				if (!$rezultat) throw new Exception($polaczenie->error);
 				$ile_takich_maili = $rezultat->num_rows;
 				if($ile_takich_maili>0)
@@ -72,8 +72,8 @@
 				if ($login_attempt==true)
 				{					
 					if ($polaczenie->query("INSERT INTO uzytkownicy (user, email, pass) VALUES ('$login', '$email', '$pass_hash')")) {
-						$_SESSION['registered']=true;
-						$_SESSION['email']=$email;
+						$_SESSION['email'] = $email;
+                        $_SESSION['verification']= false;
                         header('Location: send_email.php');
 					}
 					else {

@@ -3,6 +3,9 @@
     if (isset($_SESSION['registered']) && $_SESSION['registered']) {
         $_SESSION['reginfo'] = '<p class = "notification">Pomyślnie zarejestrowano konto!</p>';
     }
+    if (isset($_SESSION['verification']) && $_SESSION['verification']) {
+        $_SESSION['verinfo'] = '<p class = "notification">Nie można zalogować, potwierdź swojego maila!</p>';
+    }
 	if (isset($_SESSION['fr_login'])) unset($_SESSION['fr_login']);
     if (isset($_SESSION['fr_email'])) unset($_SESSION['fr_email']);
 	if (isset($_SESSION['fr_pass1'])) unset($_SESSION['fr_pass1']);
@@ -12,7 +15,7 @@
 	if (isset($_SESSION['e_pass'])) unset($_SESSION['e_pass']);
 	if (isset($_SESSION['e_bot'])) unset($_SESSION['e_bot']);
     if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==true)) {
-        header('Location: zawartosc.php');
+        header('Location: main_page.php');
         exit();
     }
     if ((isset($_SESSION['sendmail'])) && ($_SESSION['sendmail']==true)) {
@@ -35,6 +38,7 @@
     <?php if(isset($_SESSION['reginfo'])) echo $_SESSION['reginfo'];?>
     <?php if(isset($_SESSION['mailinfo'])) echo $_SESSION['mailinfo'];?>
     <?php if(isset($_SESSION['passinfo'])) echo $_SESSION['passinfo'];?>
+    <?php if(isset($_SESSION['verinfo'])) echo $_SESSION['verinfo'];?>
     <div class="field">
         <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/><path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/></svg>    
         <input autocomplete="off" class="input-field" type="text" placeholder="Login" name="login">
