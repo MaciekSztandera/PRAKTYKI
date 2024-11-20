@@ -25,9 +25,6 @@
     if ((isset($_SESSION['pass_change'])) && ($_SESSION['pass_change']==true)) {
         $_SESSION['passinfo'] = '<p class ="notification"> Pomyślnie zmieniono hasło. </p>';
     }
-    if ((isset($_SESSION['auth'])) && ($_SESSION['auth']==true)) {
-        $_SESSION['authinfo'] = '<p class ="notification"> Błąd weryfikacji! Spróbuj ponownie. </p>';
-    }
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -44,7 +41,6 @@
     if(isset($_SESSION['mailinfo'])) echo $_SESSION['mailinfo'];
     if(isset($_SESSION['passinfo'])) echo $_SESSION['passinfo'];
     if(isset($_SESSION['verinfo'])) echo $_SESSION['verinfo'];
-    if(isset($_SESSION['authinfo'])) echo $_SESSION['authinfo'];
     ?>
 
     <div class="field">
