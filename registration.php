@@ -148,7 +148,7 @@
     </script>
     <?php if(isset($_SESSION['e_bot'])) {
         echo '<div class="error">'.$_SESSION['e_bot'].'</div>';
-        unset($_SESSION['e_bot']);} 
+        unset ($_SESSION['e_bot']); } 
     ?>
     <button>Zarejestruj się</button><br/><br/>
     <p>Masz już konto? <a href="index.php">Zaloguj się</a></p>

@@ -1,6 +1,5 @@
 <?php
     session_start();
-    
 	if (isset($_SESSION['fr_login'])) unset($_SESSION['fr_login']);
     if (isset($_SESSION['fr_email'])) unset($_SESSION['fr_email']);
 	if (isset($_SESSION['fr_pass1'])) unset($_SESSION['fr_pass1']);
@@ -37,10 +36,22 @@
 <form action="login.php" method="post" class="main">
     <p id="heading">Logowanie</p>
     <?php 
-    if(isset($_SESSION['reginfo'])) echo $_SESSION['reginfo'];
-    if(isset($_SESSION['mailinfo'])) echo $_SESSION['mailinfo'];
-    if(isset($_SESSION['passinfo'])) echo $_SESSION['passinfo'];
-    if(isset($_SESSION['verinfo'])) echo $_SESSION['verinfo'];
+    if(isset($_SESSION['reginfo'])) {
+        echo $_SESSION['reginfo'];
+        unset ($_SESSION['reginfo']);
+    }
+    if(isset($_SESSION['mailinfo'])) {
+        echo $_SESSION['mailinfo'];
+        unset ($_SESSION['mailinfo']);
+    }
+    if(isset($_SESSION['passinfo'])) {
+        echo $_SESSION['passinfo'];
+        unset ($_SESSION['passinfo']);
+    }
+    if(isset($_SESSION['verinfo'])) {
+        echo $_SESSION['verinfo'];
+        unset ($_SESSION['verinfo']);
+    }
     ?>
 
     <div class="field">
