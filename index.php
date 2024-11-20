@@ -17,7 +17,7 @@
         $_SESSION['reginfo'] = '<p class ="notification"> Pomyślnie zarejestrowano konto! </p>';
     }
     if (isset($_SESSION['verification']) && $_SESSION['verification']) {
-        $_SESSION['verinfo'] = '<p class ="notification"> Nie można zalogować, potwierdź swojego maila! </p>';
+        $_SESSION['verinfo'] = '<p class ="notification"> Potwierdź swojego maila, aby się zalogować. </p>';
     }
     if ((isset($_SESSION['sendmail'])) && ($_SESSION['sendmail']==true)) {
         $_SESSION['mailinfo'] = '<p class ="notification"> Sprawdź skrzynkę pocztową. </p>';

@@ -22,7 +22,7 @@
             ->from("2pinfo@mskk.pl")
             ->to($email_to)
             ->subject("Potwierdź maila")
-            ->html('<p>Kliknij <a href="127.0.0.1/activation_email.php?token='.$token.'">tutaj</a>, aby potwierdzić maila</p>');
+            ->html('<p>Kliknij <a href="10.15.0.78/logowanie/activation_email.php?token='.$token.'">tutaj</a>, aby potwierdzić maila</p>');
         $mailer->send($email);
         $_SESSION['sendmail'] = true;
         $_SESSION['registered'] = false;

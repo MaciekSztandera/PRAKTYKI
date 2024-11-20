@@ -15,7 +15,6 @@
         $login = $_POST['login'];
         $pass = $_POST['pass'];
         $login = htmlentities($login, ENT_QUOTES, "UTF-8");
-        
         if ($rezultat = @$polaczenie->execute_query("SELECT * FROM uzytkownicy WHERE BINARY user=?", [$login]))
         {
             $ilu_userow = $rezultat->num_rows;
@@ -30,7 +29,7 @@
                         unset($_SESSION['err']);
                         $rezultat->close();
                         $_SESSION['login'] = $login;
-                        header('Location: authentication.php');
+                        header('Location: main_page.php');
                     }
                     else {
                         $_SESSION['verification']= true;

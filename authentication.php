@@ -1,13 +1,12 @@
 <?php 
 session_start();
 $kod = str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT);
-$kod_hash = hash("sha256", $kod);
 $login = $_SESSION['login'];
 require_once 'connect.php';
 $polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
 $sql = "UPDATE uzytkownicy SET auth = ? WHERE user = ?";
 $stmt = $polaczenie->prepare($sql);
-$stmt -> bind_param("ss", $kod_hash, $login);
+$stmt -> bind_param("ss", $kod, $login);
 $stmt -> execute();
 
 $update_sql = "SELECT email FROM uzytkownicy WHERE user = ?";
@@ -29,7 +28,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
             ->from("2pinfo@mskk.pl")
             ->to($email_auth)
             ->subject("Kod weryfikacyjny")
-            ->html('<p>Twój kod weryfikacyjny: '.$kod_hash.'</p>');
+            ->html('<p>Twój kod weryfikacyjny: '.$kod.'</p>');
         $mailer->send($email);
         $polaczenie->close();
     } 
