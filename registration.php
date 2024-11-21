@@ -96,7 +96,7 @@
     <title>Rejestracja</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
-    <!-- Uwaga, skrypt może nie zadziałać przy innym adresie niż 10.15.0.139 lub localhost/127.0.0.1 -->
+    <!-- Skrypt może nie zadziałać przy innym adresie niż 10.15.0.139 lub localhost/127.0.0.1 -->
 </head>
 <body>
 <form method="post" class="main">
@@ -133,12 +133,7 @@
     <div class="field">
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/></svg>    
     <input autocomplete="off" class="input-field" placeholder="Powtórz Hasło" type="password" name="pass2">
-    </div>
-    <?php if(isset($_SESSION['e_pass'])) {
-        echo '<div class="error">'.$_SESSION['e_pass'].'</div>';
-        unset($_SESSION['e_pass']); } 
-    ?>
-    <br>
+    </div><br>
     <div class="g-recaptcha" data-sitekey="6LdJxXUqAAAAAK3ZXVloDwnal58cnUm3JA2-vuL8" data-action="LOGIN"></div>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {

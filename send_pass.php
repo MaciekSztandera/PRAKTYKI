@@ -10,25 +10,25 @@
     $stmt = $polaczenie->prepare($sql);
     $stmt->bind_param("sss", $token_hash, $expires, $email_pass);
     $stmt->execute();
-
     require_once(__DIR__ . '/vendor/autoload.php');
         use Symfony\Component\Mailer\Transport;
         use Symfony\Component\Mailer\Mailer;
         use Symfony\Component\Mime\Email;
     if ($polaczenie->affected_rows){
         try {
-        $transport = Transport::fromDsn("smtp://2pinfo@mskk.pl:praktyka2024p2info@mail.mskk.pl:465");
-        $mailer = new Mailer($transport);
-        $email = (new Email())
-                ->from("2pinfo@mskk.pl")
+            $transport = Transport::fromDsn("smtp://praktyki@dikei.pl:_,94,rDSeLA@mail.dikei.pl:465");
+            $mailer = new Mailer($transport);
+            $email = (new Email())
+                ->from("praktyki@dikei.pl")
                 ->to($email_pass)
                 ->subject("Resetowanie hasła")
-                ->html('<p>Kliknij <a href="127.0.0.1/logowanie/reset_pass.php?token='.$token.'">tutaj</a>, aby zresetować hasło</p>');
+                ->html('<p>Kliknij <a href="127.0.0.1/reset_pass.php?token='.$token.'">tutaj</a>, aby zresetować hasło</p>');
             $mailer->send($email);
             $_SESSION['sendmail'] = true;
             $_SESSION['pass_change'] = false;
             $polaczenie->close();
             header('Location: index.php');
+            exit;
         } 
         catch (Exception $e) {
             echo "Wystąpił błąd: " . $e->getMessage();

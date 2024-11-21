@@ -3,18 +3,13 @@ session_start();
 $token = $_GET["token"];
 $token_hash = hash("sha256", $token);
 require_once "connect.php";
-
 $polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-if ($polaczenie->connect_error) {
-    die("Błąd połączenia z bazą danych: " . $polaczenie->connect_error);
-}
 $sql = "SELECT * FROM uzytkownicy WHERE reset_token_hash = ?";
 $stmt = $polaczenie->prepare($sql);
 $stmt->bind_param("s", $token_hash);
 $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
-
 if ($user === null) {
     die("Błędny Token");
 }
