@@ -35,25 +35,24 @@
 <body>
 <form action="login.php" method="post" class="main">
     <p id="heading">Logowanie</p>
-    <?php 
-    if(isset($_SESSION['reginfo'])) {
-        echo $_SESSION['reginfo'];
-        unset ($_SESSION['reginfo']);
-    }
-    if(isset($_SESSION['mailinfo'])) {
-        echo $_SESSION['mailinfo'];
-        unset ($_SESSION['mailinfo']);
-    }
-    if(isset($_SESSION['passinfo'])) {
-        echo $_SESSION['passinfo'];
-        unset ($_SESSION['passinfo']);
-    }
-    if(isset($_SESSION['verinfo'])) {
-        echo $_SESSION['verinfo'];
-        unset ($_SESSION['verinfo']);
-    }
-    ?>
-
+        <?php 
+        if(isset($_SESSION['reginfo'])) {
+            echo $_SESSION['reginfo'];
+            unset ($_SESSION['reginfo']);
+        }
+        if(isset($_SESSION['mailinfo'])) {
+            echo $_SESSION['mailinfo'];
+            unset ($_SESSION['mailinfo']);
+        }
+        if(isset($_SESSION['passinfo'])) {
+            echo $_SESSION['passinfo'];
+            unset ($_SESSION['passinfo']);
+        }
+        if(isset($_SESSION['verinfo'])) {
+            echo $_SESSION['verinfo'];
+            unset ($_SESSION['verinfo']);
+        }
+        ?>
     <div class="field">
         <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/><path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/></svg>    
         <input autocomplete="off" class="input-field" type="text" placeholder="Login" name="login">

@@ -29,7 +29,7 @@
                         unset($_SESSION['err']);
                         $rezultat->close();
                         $_SESSION['login'] = $login;
-                        header('Location: main_page.php');
+                        header('Location: send_auth.php');
                     }
                     else {
                         $_SESSION['verification']= true;
