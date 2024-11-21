@@ -1,0 +1,68 @@
+28.10 – Zapoznanie się z przepisami bezpieczeństwa i higieny pracy (BHP) oraz organizacja stanowiska pracy.
+29.10 – Instalacja i konfiguracja systemu FreeBSD na wirtualnych maszynach.
+30.10 – Bieżąca inspekcja oraz konserwacja urządzeń komputerowych.
+31.10 – Identyfikacja oraz dobór odpowiedniej karty sieciowej kompatybilnej z serwerem.
+
+
+04.11 – Instalacja i konfiguracja narzędzi do pracy na maszynie wirtualnej: Apache, MySQL.
+05.11 – Instalacja i konfiguracja narzędzi do pracy: PuTTY, WinSCP, HeidiSQL.
+06.11 – Zapoznanie się z koncepcją sesji oraz jej implementacją w języku PHP.
+07.11 – Projektowanie i tworzenie struktury relacyjnej bazy danych. Konfiguracja serwera HTTP.
+08.11 – Implementacja systemu logowania z wykorzystaniem hasła oraz rejestracji w aplikacji internetowej na serwerze.
+
+
+12.11 – Wprowadzenie do biblioteki Symfony Mailer oraz konfiguracja połączenia z serwerem SMTP.
+13.11 – Opracowanie i wdrożenie mechanizmu odzyskiwania haseł do kont w aplikacji internetowej.
+14.11 – Analiza i korekta błędów związanych z mechanizmem odzyskiwania dostępu do kont.
+15.11 – Wdrożenie funkcji weryfikacji adresu e-mail dla nowo zarejestrowanych użytkowników aplikacji internetowej.
+
+
+18.11 – Analiza i korekta błędów związanych z weryfikacją adresów e-mail w aplikacji internetowej.
+19.11 – Implementacja zabezpieczenia reCAPTCHA dla rejestracji kont w aplikacji internetowej.
+20.11 – Analiza i korekta błędów związanych z zabezpieczeniem reCAPTCHA w aplikacji internetowej.
+21.11 – Przeprowadzenie testów integracyjnych aplikacji oraz wprowadzenie wymaganych poprawek.
+22.11 – Przygotowanie dokumentacji technicznej opisującej funkcjonalności stworzonej aplikacji internetowej. Przekazanie ukończonej aplikacji opiekunowi praktyk.
+
+
+
+
+
+
+rejestracja
+logowanie / wylogowywanie
+zabezpieczenie recaptcha
+funkcja zapomniałem hasła
+weryfikacja emaila przy rejestracji (link)
+weryfikacja emaila przy logowaniu (kod)
+blokada logowania dla kont z niezweryfikowanym adresem email
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$transport = Transport::fromDsn("smtp://2pinfo@mskk.pl:praktyka2024p2info@mail.mskk.pl:465");
+        $mailer = new Mailer($transport);
+        $email = (new Email())
+                ->from("2pinfo@mskk.pl")
+                ->to($email_pass)
+                ->subject("Resetowanie hasła")
+                ->html('<p>Kliknij <a href="127.0.0.1/logowanie/reset_pass.php?token='.$token.'">tutaj</a>, aby zresetować hasło</p>');
+            $mailer->send($email);
+            $_SESSION['sendmail'] = true;
+            $_SESSION['pass_change'] = false;
+            $polaczenie->close();
+            header('Location: index.php');
