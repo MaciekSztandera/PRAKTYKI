@@ -8,7 +8,6 @@ $stmt -> bind_param("s", $_SESSION['login']);
 $stmt -> bind_result($email_auth);
 $stmt -> execute();
 $stmt -> fetch();
-
 $verification_code = str_pad(rand(0,999999), 6,'0', STR_PAD_LEFT);
 $_SESSION['vericode'] = $verification_code;
 require_once(__DIR__ . '/vendor/autoload.php');
