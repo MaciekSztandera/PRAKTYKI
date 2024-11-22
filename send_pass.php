@@ -16,13 +16,13 @@
         use Symfony\Component\Mime\Email;
     if ($polaczenie->affected_rows){
         try {
-            $transport = Transport::fromDsn("smtp://praktyki@dikei.pl:_,94,rDSeLA@mail.dikei.pl:465");
+            $transport = Transport::fromDsn("smtps://emdokka@gazeta.pl:PASSWORD125.@smtp.gazeta.pl:465");
             $mailer = new Mailer($transport);
             $email = (new Email())
-                ->from("praktyki@dikei.pl")
+                ->from("emdokka@gazeta.pl")
                 ->to($email_pass)
                 ->subject("Resetowanie hasła")
-                ->html('<p>Kliknij <a href="127.0.0.1/reset_pass.php?token='.$token.'">tutaj</a>, aby zresetować hasło</p>');
+                ->html('<p>Kliknij <a href="10.15.0.78/logowanie/reset_pass.php?token='.$token.'">tutaj</a>, aby zresetować hasło</p>');
             $mailer->send($email);
             $_SESSION['sendmail'] = true;
             $_SESSION['pass_change'] = false;
@@ -31,7 +31,8 @@
             exit;
         } 
         catch (Exception $e) {
-            echo "Wystąpił błąd: " . $e->getMessage();
+            echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+            // echo '<br />Informacja developerska: '.$e;
         }
     }
 ?>

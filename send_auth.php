@@ -16,10 +16,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
     use Symfony\Component\Mailer\Mailer;
     use Symfony\Component\Mime\Email;
     try {
-        $transport = Transport::fromDsn("smtp://praktyki@dikei.pl:_,94,rDSeLA@mail.dikei.pl:465");
+        $transport = Transport::fromDsn("smtps://emdokka@gazeta.pl:PASSWORD125.@smtp.gazeta.pl:465");
         $mailer = new Mailer($transport);
         $email = (new Email())
-            ->from("praktyki@dikei.pl")
+            ->from("emdokka@gazeta.pl")
             ->to($email_auth)
             ->subject("Logowanie - kod weryfikacyjny")
             ->html('<p>Twój kod weryfikacyjny: '.$_SESSION['vericode'].'</p>');
@@ -27,7 +27,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
         $polaczenie->close();
     }
     catch (Exception $e) {
-        echo "Wystąpił błąd: " . $e->getMessage();
+        echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+		// echo '<br />Informacja developerska: '.$e;
     }
     if (isset($_SESSION['verificate']) && $_SESSION['verificate']==false) {
         $_SESSION['verinfo'] = '<p class ="error"> Błędny kod weryfikacyjny! </p>';

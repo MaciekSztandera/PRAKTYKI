@@ -10,22 +10,20 @@ $stmt->bind_param("s", $auth_token_hash);
 $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
-var_dump($_SESSION['test']);
+if ($user === null) {
+    echo "Nieprawidłowy token";
+    exit;
+} 
 
-// if ($user === null) {
-//     echo "Nieprawidłowy token";
-//     exit;
-// } 
-
-// else {
-//     $update_sql = "UPDATE uzytkownicy SET active_account='y' WHERE ID = ?";
-//     $update_stmt = $polaczenie->prepare($update_sql);
-//     $update_stmt->bind_param("i", $user['ID']);
-//     $update_stmt->execute();
-//     $result = $update_stmt->get_result();
-//     echo $result;
-// }
-// $_SESSION['registered']=true;
-// header('Location: index.php');
-// $polaczenie->close();
+else {
+    $update_sql = "UPDATE uzytkownicy SET active_account='y' WHERE ID = ?";
+    $update_stmt = $polaczenie->prepare($update_sql);
+    $update_stmt->bind_param("i", $user['ID']);
+    $update_stmt->execute();
+    $result = $update_stmt->get_result();
+    echo $result;
+}
+$_SESSION['registered']=true;
+header('Location: index.php');
+$polaczenie->close();
 ?>
